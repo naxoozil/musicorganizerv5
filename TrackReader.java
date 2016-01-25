@@ -34,7 +34,8 @@ public class TrackReader
     {
         File audioFolder = new File(folder);
         ArrayList<Track> tracks = new ArrayList<Track>();
-        File[] audioFiles = audioFolder.listFiles(new FilenameFilter() {
+        File[] audioFiles = audioFolder.listFiles(new FilenameFilter() 
+        {
             /**
              * Accept files with matching suffix.
              * @param dir The directory containing the file.

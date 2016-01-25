@@ -13,6 +13,10 @@ public class Track
     private String title;
     // Where the track is stored.
     private String filename;
+    // It큦 the name of the song큦 album
+    private String nombreAlbum;
+    
+    private int contador;
     
     /**
      * Constructor for objects of class Track.
@@ -23,6 +27,8 @@ public class Track
     public Track(String artist, String title, String filename)
     {
         setDetails(artist, title, filename);
+        this.contador = 0; 
+        nombreAlbum = "desconocido";
     }
     
     /**
@@ -34,6 +40,7 @@ public class Track
     public Track(String filename)
     {
         setDetails("unknown", "unknown", filename);
+        this.contador = 0;
     }
     
     /**
@@ -62,6 +69,14 @@ public class Track
     {
         return filename;
     }
+    
+    /**
+     * Return the song큦 album큦 name
+     */
+    public String getNombreAlbum()
+    {
+        return nombreAlbum;
+    }
         
     /**
      * Return details of the track: artist, title and file name.
@@ -69,7 +84,7 @@ public class Track
      */
     public String getDetails()
     {
-        return artist + ": " + title + "  (file: " + filename + ")";
+        return artist + ": " + title + nombreAlbum + "  (file: " + filename + " )" + contador;
     }
     
     /**
@@ -84,5 +99,14 @@ public class Track
         this.title = title;
         this.filename = filename;
     }
+    
+    public void resetCounter(){
+        contador = 0;
+    }
+    
+    public void sumsCounter(){
+        contador++;
+    }
+    
     
 }

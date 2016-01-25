@@ -57,6 +57,7 @@ public class MusicOrganizer
             Track track = tracks.get(index);
             player.startPlaying(track.getFilename());
             System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
+            track.sumsCounter();
         }
     }
     
@@ -124,6 +125,7 @@ public class MusicOrganizer
     {
         if(tracks.size() > 0) {
             player.startPlaying(tracks.get(0).getFilename());
+            tracks.get(0).sumsCounter();
         }
     }
     
@@ -168,6 +170,25 @@ public class MusicOrganizer
         // Put all thetracks into the organizer.
         for(Track track : tempTracks) {
             addTrack(track);
+        }
+    }
+    
+    /**
+     * Finds the songs with a tittle written by the user
+     */
+    public void findInTittle (String nombreCancion){
+        boolean foundTittle = false;
+        String artist;
+        for (Track track : tracks){
+            if (track.getTitle().contains(nombreCancion)){
+                foundTittle = true;
+                System.out.println(track.getTitle());
+            }
+            
+        }
+
+        if (foundTittle == false){
+            System.out.println("No se han encontrado resultados");
         }
     }
 }
