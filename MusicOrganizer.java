@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.Iterator;
 /**
  * A class to hold details of audio tracks.
  * Individual tracks may be played.
@@ -15,6 +15,7 @@ public class MusicOrganizer
     private MusicPlayer player;
     // A reader that can read music files and load them as tracks.
     private TrackReader reader;
+    private boolean playing;
 
     /**
      * Create a MusicOrganizer
@@ -24,6 +25,7 @@ public class MusicOrganizer
         tracks = new ArrayList<Track>();
         player = new MusicPlayer();
         reader = new TrackReader();
+        playing = false;
         readLibrary("audio");
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
@@ -56,6 +58,7 @@ public class MusicOrganizer
         if(indexValid(index)) {
             Track track = tracks.get(index);
             player.startPlaying(track.getFilename());
+            playing = true;
             System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
             track.sumsCounter();
         }
@@ -126,6 +129,7 @@ public class MusicOrganizer
         if(tracks.size() > 0) {
             player.startPlaying(tracks.get(0).getFilename());
             tracks.get(0).sumsCounter();
+            playing = true;
         }
     }
     
@@ -189,6 +193,26 @@ public class MusicOrganizer
 
         if (foundTittle == false){
             System.out.println("No se han encontrado resultados");
+        }
+    }
+    
+    public void isPlaying()
+    {
+        if (playing){
+            System.out.println("Ya hay una reproduccion en curso");
+        }
+            if(tracks.size() > 0) {
+            player.startPlaying(tracks.get(0).getFilename());
+            tracks.get(0).sumsCounter();
+            playing = true;
+        }
+    }
+    public void listAllTrackWithIterator()
+    {
+        Iterator<Track> ite = tracks.iterator();
+        while (ite.hasNext()) {
+            Track track = ite.next();
+            System.out.println(track.getDetails());
         }
     }
 }

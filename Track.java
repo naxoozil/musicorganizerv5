@@ -41,6 +41,7 @@ public class Track
     {
         setDetails("unknown", "unknown", filename);
         this.contador = 0;
+        nombreAlbum = "desconocido";
     }
     
     /**
