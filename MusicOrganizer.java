@@ -15,18 +15,19 @@ public class MusicOrganizer
     private MusicPlayer player;
     // A reader that can read music files and load them as tracks.
     private TrackReader reader;
+    //atributo usado para saber si una cancion esta een reproduccion o no
     private boolean playing;
 
     /**
      * Create a MusicOrganizer
      */
-    public MusicOrganizer()
+    public MusicOrganizer(String folder)
     {
         tracks = new ArrayList<Track>();
         player = new MusicPlayer();
         reader = new TrackReader();
         playing = false;
-        readLibrary("audio");
+        readLibrary(folder);
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
     }
@@ -207,6 +208,7 @@ public class MusicOrganizer
             playing = true;
         }
     }
+    
     public void listAllTrackWithIterator()
     {
         Iterator<Track> ite = tracks.iterator();
